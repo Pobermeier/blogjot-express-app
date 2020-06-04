@@ -10,7 +10,7 @@ app.set('view engine', 'handlebars');
 
 // Index route
 app.get('/', (req, res) => {
-  const title = 'Hello World!';
+  const title = 'Welcome to BlogJot!';
   res.render('index', {
     title,
   });
