@@ -1,0 +1,14 @@
+{
+  "name": "blogjot-express-app",
+  "version": "1.0.0",
+  "description": "An express app with server-side rendered views that allows you to save your blog-post ideas",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Obermeier",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
