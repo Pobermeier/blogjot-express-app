@@ -4,7 +4,8 @@
   "description": "An express app with server-side rendered views that allows you to save your blog-post ideas",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app",
+    "start": "node app"
   },
   "author": "Patrick Obermeier",
   "license": "MIT",
