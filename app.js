@@ -72,7 +72,9 @@ app.get('/ideas/add', (req, res) => {
 
 // Edit Idea Form
 app.get('/ideas/edit/:id', (req, res) => {
-  res.render('ideas/edit');
+  Idea.findOne({
+    _id: req.params.id,
+  }).then((idea) => res.render('ideas/edit', { idea }));
 });
 
 // Process "Add Idea"-Form requests
