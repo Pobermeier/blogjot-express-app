@@ -70,6 +70,11 @@ app.get('/ideas/add', (req, res) => {
   res.render('ideas/add');
 });
 
+// Edit Idea Form
+app.get('/ideas/edit/:id', (req, res) => {
+  res.render('ideas/edit');
+});
+
 // Process "Add Idea"-Form requests
 app.post('/ideas', (req, res) => {
   let errors = [];
