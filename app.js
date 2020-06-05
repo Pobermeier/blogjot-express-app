@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const Handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
@@ -29,6 +30,9 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+// Set-up express static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Handlebars Middleware
 app.engine(
