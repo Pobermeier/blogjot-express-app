@@ -1,5 +1,9 @@
 const express = require('express');
+const Handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
+const {
+  allowInsecurePrototypeAccess,
+} = require('@handlebars/allow-prototype-access');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -24,7 +28,13 @@ require('./models/Idea');
 const Idea = mongoose.model('ideas');
 
 // Handlebars Middleware
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine(
+  'handlebars',
+  exphbs({
+    defaultLayout: 'main',
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+  }),
+);
 app.set('view engine', 'handlebars');
 
 // Body-parser Middleware
@@ -42,6 +52,17 @@ app.get('/', (req, res) => {
 // About-page route
 app.get('/about', (req, res) => {
   res.render('about');
+});
+
+// Idea Index Page
+app.get('/ideas', (req, res) => {
+  Idea.find({})
+    .sort({ date: 'desc' })
+    .then((ideas) => {
+      res.render('ideas/index', {
+        ideas,
+      });
+    });
 });
 
 // Add Idea Form
