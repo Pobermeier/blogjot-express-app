@@ -1,6 +1,6 @@
 # BlogJot - Express App with Authentication & DB
 
-BlogJot is an express-app with server-side rendered views (using Handlebars)that allows you to save your blog-post ideas. The data is stored on a cloud-based MongoDB instance. You can check out a live version of this project [here](http://104.248.44.20:5005/).
+BlogJot is an express-app with server-side rendered views (using Handlebars)that allows you to save your blog-post ideas. The data is stored on a cloud-based MongoDB instance. Authentication is implemented with passport using a local strategy. You can check out a live version of this project [here](http://104.248.44.20:5005/).
 
 ## Project Set-Up
 
