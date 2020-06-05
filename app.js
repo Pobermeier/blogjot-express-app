@@ -13,7 +13,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5005;
 
 // Load routes
 const ideas = require('./routes/ideas');
@@ -21,13 +21,12 @@ const users = require('./routes/users');
 
 // Passport config
 require('./config/passport')(passport);
+// DB config
+const db = require('./config/database');
 
 // Connect to DB via Mongoose
 mongoose
-  .connect(
-    'mongodb+srv://pober:BuA7yjysl6bEsU9d@cluster0-uclm9.mongodb.net/blogjot?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true },
-  )
+  .connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB connected');
   })
