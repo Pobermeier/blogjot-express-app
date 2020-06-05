@@ -6,6 +6,7 @@ const {
 } = require('@handlebars/allow-prototype-access');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const app = express();
 const PORT = 5000;
@@ -40,6 +41,9 @@ app.set('view engine', 'handlebars');
 // Body-parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Method-override middleware
+app.use(methodOverride('_method'));
 
 // Index route
 app.get('/', (req, res) => {
@@ -103,6 +107,21 @@ app.post('/ideas', (req, res) => {
       res.redirect('/ideas');
     });
   }
+});
+
+// Edit Form process
+app.put('/ideas/:id', (req, res) => {
+  Idea.findOne({
+    _id: req.params.id,
+  }).then((idea) => {
+    // new values
+    idea.title = req.body.title;
+    idea.details = req.body.details;
+
+    idea.save().then((idea) => {
+      res.redirect('/ideas');
+    });
+  });
 });
 
 app.listen(PORT, () => {
