@@ -34,8 +34,19 @@ app.get('/', (req, res) => {
   });
 });
 
+// About-page route
 app.get('/about', (req, res) => {
   res.render('about');
+});
+
+// Add Idea Form
+app.get('/ideas/add', (req, res) => {
+  res.render('ideas/add');
+});
+
+// Process "Add Idea"-Form requests
+app.post('/ideas', (req, res) => {
+  res.send('ok');
 });
 
 app.listen(PORT, () => {
