@@ -124,6 +124,13 @@ app.put('/ideas/:id', (req, res) => {
   });
 });
 
+// Delete idea
+app.delete('/ideas/:id', (req, res) => {
+  Idea.remove({ _id: req.params.id }).then(() => {
+    res.redirect('/ideas');
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
