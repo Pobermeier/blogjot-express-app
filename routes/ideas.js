@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
       details: req.body.details,
     };
     new Idea(newUser).save().then((idea) => {
-      req.flash('success_msg', 'Video idea added');
+      req.flash('success_msg', 'Idea added');
       res.redirect('/ideas');
     });
   }
@@ -68,7 +68,7 @@ router.put('/:id', (req, res) => {
     idea.details = req.body.details;
 
     idea.save().then((idea) => {
-      req.flash('success_msg', 'Video idea updated');
+      req.flash('success_msg', 'Idea updated');
       res.redirect('/ideas');
     });
   });
@@ -77,7 +77,7 @@ router.put('/:id', (req, res) => {
 // Delete idea
 router.delete('/:id', (req, res) => {
   Idea.deleteOne({ _id: req.params.id }).then(() => {
-    req.flash('error_msg', 'Video idea removed');
+    req.flash('error_msg', 'Idea removed');
     res.redirect('/ideas');
   });
 });
